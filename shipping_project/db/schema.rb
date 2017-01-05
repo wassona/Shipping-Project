@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105155202) do
+ActiveRecord::Schema.define(version: 20170105203742) do
 
   create_table "boats", force: :cascade do |t|
     t.string  "name"
     t.integer "containers"
+    t.integer "location_id"
+    t.integer "user_id"
   end
 
   create_table "boats_jobs", force: :cascade do |t|
@@ -30,12 +32,14 @@ ActiveRecord::Schema.define(version: 20170105155202) do
     t.integer "containers_needed"
     t.integer "origin_id"
     t.integer "destination_id"
+    t.integer "user_id"
     t.index ["destination_id"], name: "index_jobs_on_destination_id"
     t.index ["origin_id"], name: "index_jobs_on_origin_id"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "boat_id"
   end
 
   create_table "users", force: :cascade do |t|

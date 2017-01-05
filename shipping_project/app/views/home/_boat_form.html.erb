@@ -1,0 +1,13 @@
+<h2 style="color: blue;">Register a boat</h2>
+<%= form_for @boat do |f| %>
+	<%= f.label :name %>:
+	<%= f.text_field :name %><br/>
+	<%= f.label :containers %>:
+	<%= f.text_field :containers %><br/>
+	<%= f.label :location_id %>:
+	<%= f.select :location_id , Location.all.map {|r| [ r.name, r.id ] }, { :include_blank => true } %>
+	<br/>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+
+	<%= f.submit %>
+<% end %>

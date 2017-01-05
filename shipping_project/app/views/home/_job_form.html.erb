@@ -1,0 +1,17 @@
+<h2 style="color: blue;">Register a job</h2>
+<%= form_for @job do |f| %>
+	<%= f.label :description %>:
+	<%= f.text_area :description %><br/>
+	<%= f.label :cost %>:
+	<%= f.text_field :cost %><br/>
+	<%= f.label :containers_needed %>:
+	<%= f.text_field :containers_needed %><br/>
+	<%= f.label :origin_id %>:
+	<%= f.select :origin_id , Location.all.map {|r| [ r.name, r.id ] }, { :include_blank => true } %>
+	<%= f.label :destination_id %>:
+	<%= f.select :destination_id , Location.all.map {|r| [ r.name, r.id ] }, { :include_blank => true } %>
+	<br/>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+
+	<%= f.submit %>
+<% end %>

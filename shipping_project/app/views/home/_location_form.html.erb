@@ -1,0 +1,6 @@
+<h2 style="color: blue;">Register a location</h2>
+<%= form_for @location do |f| %>
+	<%= f.label :name %>:
+	<%= f.text_field :name %><br/>
+	<%= f.submit %>
+<% end %>
