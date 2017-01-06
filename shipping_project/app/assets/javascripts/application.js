@@ -17,8 +17,7 @@
 
 $(document).ready(function(){   
 	$(".edit_job").on("ajax:success", function(e,data,status,xhr){     
-		console.log("got boat list");
 
-		$(".boat-list").append(xhr.responseText)   
+		$(e.currentTarget).parent().append(xhr.responseText)   
 	}) 
 })

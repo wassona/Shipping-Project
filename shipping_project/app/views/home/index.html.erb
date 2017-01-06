@@ -10,18 +10,20 @@
 		<p>Containers Needed: <%= j.containers_needed %></p>
 		<p>Containers Assigned: <%= j.containers_assigned %></p>
 		<p>From: <%= j.origin.name %> To: <%= j.destination.name %></p>
-		<p>Boats assigned:</p>
 		<div class="boat-list">
+			<%= form_for j, remote: true, url: add_boat_path(j.id) do |f| %>
+				<%= f.label :boats %>:
+				<%= f.select :boats, current_user.boats.all.map {|r| [ r.name, r.id ] }, { :include_blank => true } %>
+				<%= f.submit "Add Boat" %>
+
+			<% end %>			
+			<p>Boats assigned:</p>
 			<%= render j.boats %>
+
 		</div>
 
 
 
-		<%= form_for j, remote: true, url: add_boat_path(j.id) do |f| %>
-			<%= f.label :boats %>:
-			<%= f.select :boats, current_user.boats.all.map {|r| [ r.name, r.id ] }, { :include_blank => true } %>
-			<%= f.submit "Add Boat" %>
-
-		<% end %>
+		
 	</div>
 <% end %>
