@@ -9,12 +9,14 @@
   </head>
 
   <body>
+    <h2><%= link_to "Shipping Manager Pro", root_path %></h2>
   	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   	<% if user_signed_in? %>
 	    <%= link_to 'Sign out',  destroy_user_session_path,  method: :delete, data: { confirm: 'Are you sure?' } %>
 	    <%= image_tag current_user.avatar.url(:thumb) %>
-	<% end %>
+      <%= link_to "Users", users_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

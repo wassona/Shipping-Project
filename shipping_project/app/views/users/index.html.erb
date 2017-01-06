@@ -1,0 +1,12 @@
+<% User.all.each do |u| %>
+	<h1><%= u.email %></h1>
+	<%= image_tag u.avatar.url(:medium) %>
+	<ul>
+		<% u.boats.each do |b| %>
+			<li>
+				<%= b.name %>
+				<%= image_tag b.avatar.url(:thumb) %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
