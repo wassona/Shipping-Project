@@ -11,14 +11,17 @@
 		<p>Containers Assigned: <%= j.containers_assigned %></p>
 		<p>From: <%= j.origin.name %> To: <%= j.destination.name %></p>
 		<p>Boats assigned:</p>
-		<% j.boats.each do |b| %>
-			<p><%= b.name %></p>
-			<p>Containers: <%= b.containers %></p>
-		<% end %>
-		<%= form_for j, url: add_boat_path(j.id) do |f| %>
+		<div class="boat-list">
+			<%= render j.boats %>
+		</div>
+
+
+
+		<%= form_for j, remote: true, url: add_boat_path(j.id) do |f| %>
 			<%= f.label :boats %>:
 			<%= f.select :boats, current_user.boats.all.map {|r| [ r.name, r.id ] }, { :include_blank => true } %>
 			<%= f.submit "Add Boat" %>
+
 		<% end %>
 	</div>
 <% end %>

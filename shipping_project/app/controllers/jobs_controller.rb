@@ -28,8 +28,10 @@ class JobsController < ApplicationController
 		@boat = Boat.find params[:job][:boats]
 
 		@job.boats.append @boat
-		
-		redirect_to :back
+
+		render @boat
+
+
 	end
 
 	private

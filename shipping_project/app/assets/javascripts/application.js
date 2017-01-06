@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){   
+	$(".edit_job").on("ajax:success", function(e,data,status,xhr){     
+		console.log("got boat list");
+
+		$(".boat-list").append(xhr.responseText)   
+	}) 
+})
