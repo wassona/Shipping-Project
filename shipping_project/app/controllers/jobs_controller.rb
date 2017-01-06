@@ -29,9 +29,7 @@ class JobsController < ApplicationController
 
 		@job.boats.append @boat
 
-		render @boat
-
-
+		render partial: @boat, locals: { job_id: params[:job_id]}
 	end
 
 	private

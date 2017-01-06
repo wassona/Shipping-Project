@@ -1,2 +1,18 @@
-<p><%= boat.name %></p>
-<p>Containers: <%= boat.containers %></p>
+<div>
+	<p><%= boat.name %></p>
+	<p>Containers: <%= boat.containers %></p>
+
+
+	<%= link_to(
+		"Remove Boat from Job",	{
+			controller: "boats",
+			boat: boat,
+			action: "remove_job",
+			job_id: job_id,
+			remote: true,
+		}, {
+			method: :patch,
+			class: "remove-association"
+		}, 
+	) %>
+</div>

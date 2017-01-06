@@ -16,8 +16,24 @@
 //= require_tree .
 
 $(document).ready(function(){   
-	$(".edit_job").on("ajax:success", function(e,data,status,xhr){     
-
-		$(e.currentTarget).parent().append(xhr.responseText)   
-	}) 
+	// $(".edit_job").on("ajax:success", function(e,data,status,xhr){     
+	// 	var boatList = $(e.currentTarget).parent();
+	// 	boatList.append(xhr.responseText);
+	// 	$(".remove-association", boatList.last()).on("ajax:complete", function(evt){    
+	// 		$(evt.currentTarget).parent().hide();
+	// 	}) 
+	// }) 
+ 
+	// $(".remove-association").on("ajax:complete", function(e){   
+	// 	$(e.currentTarget).parent().hide();  
+	// }) 
+	$(document).on("ajax:success", function(event, data, status, xhr) {
+		if(event.target.tagName === "A"){
+			$(event.target).parent().hide();
+		} else if (event.target.tagName === "FORM"){
+			$(event.target).parent().append(xhr.responseText);
+		}
+	});
 })
+
+

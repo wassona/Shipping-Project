@@ -18,7 +18,7 @@
 
 			<% end %>			
 			<p>Boats assigned:</p>
-			<%= render j.boats %>
+			<%= render partial: j.boats, locals: {job_id: j.id} %>
 
 		</div>
 

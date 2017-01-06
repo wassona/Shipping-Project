@@ -9,9 +9,20 @@ class BoatsController < ApplicationController
 		end
 	end
 
+	def remove_job
+		@boat = Boat.find params[:boat]
+		@job = Job.find params[:job_id]
+
+		@boat.jobs.delete @job
+	end
+
+
+
 	private
 		def boat_params
   			params.require(:boat).permit(:name,:containers,:location,:location_id, :user_id)
 		end
+
+
 
 end
